@@ -19,6 +19,7 @@ Third Part: Join condition
 
 Fourth Part: Final SELECT
 
+```SQL
 WITH Bx AS (                                      -- Second Part
     SELECT
         B.<join_key>,
@@ -36,3 +37,4 @@ SELECT
 FROM <table_1> A                                   -- First Part
 INNER JOIN Bx                                      -- Second Part (windowed table)
     ON A.<join_key> = Bx.<join_key>;               -- Third Part
+```
