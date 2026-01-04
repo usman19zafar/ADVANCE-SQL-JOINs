@@ -10,7 +10,9 @@ flowchart TD
 1. Purpose
 Join two tables where one side uses window functions to compute analytical metrics before joining.
 
+
 2. Four-Part Flow
+
 First Part: Main table A
 
 Second Part: Windowed table B
