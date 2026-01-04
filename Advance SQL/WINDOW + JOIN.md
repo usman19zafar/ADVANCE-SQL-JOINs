@@ -2,10 +2,8 @@
 
 ## Diagram
 ```mermaid
-B[Table B - Windowed]
-B[Table B Windowed]
-B[Table B: Windowed]
-B["Table B (Windowed)"]
+flowchart TD
+    B["Table B Windowed"] -->|Join on key| A[Table A]
 
 ```
 
