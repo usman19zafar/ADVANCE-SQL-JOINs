@@ -2,8 +2,11 @@
 
 ## Diagram
 ```mermaid
-flowchart TD
-    B[Table B (Windowed)] -->|Join on key| A[Table A]
+B[Table B - Windowed]
+B[Table B Windowed]
+B[Table B: Windowed]
+B["Table B (Windowed)"]   <-- also valid because quotes protect it
+
 ```
 
 1. Purpose
