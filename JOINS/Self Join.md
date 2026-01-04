@@ -3,7 +3,7 @@ flowchart TD
     A[Table A] --> A2[Table A Alias]
 ```
 
-# SELF JOIN — Simple Template
+# SELF JOIN — Simple Template (Lead towards CTEs)
 
 ## 1. Purpose
 Join a table to itself using aliases.
