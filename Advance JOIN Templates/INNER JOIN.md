@@ -1,27 +1,28 @@
 ```mermaid
 flowchart TD
-    A[Table A] -->|Analytical match| B[Windowed, Ranked Subquery]
+    A[Table A] -->|Analytical match| B[Ranked Subquery]
     B -->|Top‑N per key| R[Result Set]
 ```
 
 # INNER JOIN — Advanced Template
 
 ## 1. Purpose
-Perform an analytical, multi‑predicate, window‑aware join where:
-- Table B is pre‑filtered using ranking or partition logic  
-- Only the **top‑ranked** or **business‑qualified** rows from B are joined  
-- The join enforces **strict matching** on keys and analytical conditions  
+Perform an analytical, multi‑predicate join where:
+- Table B is pre‑ranked using window functions  
+- Only the top‑ranked or business‑qualified rows are joined  
+- Strict matching ensures analytical correctness  
 
 ## 2. Four-Part Flow
-- First Part: Main table A  
-- Second Part: Analytical subquery B (ranked, filtered, partitioned)  
-- Third Part: Multi‑predicate join condition  
+- First Part: Analytical subquery Bx  
+- Second Part: Main table A  
+- Third Part: INNER JOIN with ranking filter  
 - Fourth Part: Final SELECT with enriched metrics  
 
 ## 3. Template
 ```sql
-WITH Bx AS (
+WITH Bx AS (                                      -- First Part
     SELECT
+        B.<join_key>,
         B.<column_list_from_B>,
         ROW_NUMBER() OVER (
             PARTITION BY B.<partition_key>
@@ -34,12 +35,12 @@ WITH Bx AS (
     WHERE B.<status> IN ('Active','Pending')
       AND B.<date> >= DATEADD(DAY, -90, GETDATE())
 )
-SELECT
+SELECT                                              -- Fourth Part
     A.<column_list_from_A>,
     Bx.<column_list_from_B>,
     Bx.total_metric
-FROM <table_1> A
-INNER JOIN Bx
+FROM <table_1> A                                    -- Second Part
+INNER JOIN Bx                                       -- Third Part
     ON A.<join_key> = Bx.<join_key>
    AND Bx.rn = 1;
 ```
