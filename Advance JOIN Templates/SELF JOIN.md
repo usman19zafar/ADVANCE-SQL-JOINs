@@ -1,14 +1,15 @@
 ```mermaid
 flowchart TD
-    A[Table A] -->|Alias A1 (child)| A1[Analytical Child Set]
-    A[Table A] -->|Alias A2 (parent)| A2[Analytical Parent Set]
-    A1 -->|Hierarchy / comparison| A2
+    A[Table A] -->|Alias A1 child| A1[Analytical Child Set]
+    A[Table A] -->|Alias A2 parent| A2[Analytical Parent Set]
+    A1 -->|Hierarchy comparison| A2
 ```
 
 # SELF JOIN — Advanced Template
 
 ## 1. Purpose
-Perform an **intra‑table analytical join** where:
+Perform an intra‑table analytical join where:
+
 - The same table is split into child and parent analytical sets  
 - Window functions compute sibling metrics, ordering, and historical values  
 - Useful for hierarchy modeling, latest‑child selection, and comparative analysis  
