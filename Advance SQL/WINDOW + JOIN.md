@@ -5,7 +5,7 @@
 B[Table B - Windowed]
 B[Table B Windowed]
 B[Table B: Windowed]
-B["Table B (Windowed)"]   <-- also valid because quotes protect it
+B["Table B (Windowed)"]
 
 ```
 
