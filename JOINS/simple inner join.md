@@ -6,7 +6,9 @@ flowchart TD
 # INNER JOIN — Simple Template
 
 ## 1. Purpose
-Explain what this join does in one sentence.
+
+An INNER JOIN returns only the rows where both tables have a matching key.
+If there is no match, the row is discarded.
 
 ## 2. Four-Part Flow
 - First Part: Main table A  
