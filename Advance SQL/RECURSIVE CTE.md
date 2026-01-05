@@ -11,9 +11,13 @@ Purpose
 Generate hierarchical or iterative results by repeatedly referencing the CTE until a termination condition is met.
 
 Four-Part Flow
+
 First Part: Anchor query
+
 Second Part: Recursive query
+
 Third Part: Termination condition
+
 Fourth Part: Final SELECT
 
 ```SQL
